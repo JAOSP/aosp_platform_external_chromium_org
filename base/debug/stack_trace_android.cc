@@ -26,9 +26,9 @@ struct StackCrawlState {
   bool have_skipped_self;
 };
 
-// Clang's unwind.h doesn't provide _Unwind_GetIP on ARM, refer to
-// http://llvm.org/bugs/show_bug.cgi?id=16564 for details.
-#if defined(__clang__)
+// Prior to 3.4, Clang's unwind.h doesn't provide _Unwind_GetIP on ARM,
+// refer to http://llvm.org/bugs/show_bug.cgi?id=16564 for details.
+#if defined(__clang__) && (__clang_major__ < 3 || (__clang_major__ == 3 && __clang_minor__ < 4))
 uintptr_t _Unwind_GetIP(_Unwind_Context* context) {
   uintptr_t ip = 0;
   _Unwind_VRS_Get(context, _UVRSC_CORE, 15, _UVRSD_UINT32, &ip);

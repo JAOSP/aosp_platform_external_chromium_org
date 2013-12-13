@@ -32,7 +32,7 @@ void MaybeAddTouchPoint(JNIEnv* env,
 
   // Record the current number of points in the WebTouchEvent
   const int idx = event.touchesLength;
-  DCHECK_LT(idx, WebKit::WebTouchEvent::touchesLengthCap);
+  DCHECK_LT(idx, (int)WebKit::WebTouchEvent::touchesLengthCap);
 
   WebTouchPoint wtp;
   wtp.id = Java_TouchPoint_getId(env, pt);

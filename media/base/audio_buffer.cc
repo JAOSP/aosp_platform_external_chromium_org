@@ -34,7 +34,7 @@ AudioBuffer::AudioBuffer(SampleFormat sample_format,
   CHECK_LE(channel_count, limits::kMaxChannels);
   CHECK_GE(frame_count, 0);
   int bytes_per_channel = SampleFormatToBytesPerChannel(sample_format);
-  DCHECK_LE(bytes_per_channel, kChannelAlignment);
+  DCHECK_LE(bytes_per_channel, (int)kChannelAlignment);
   int data_size = frame_count * bytes_per_channel;
 
   // Empty buffer?

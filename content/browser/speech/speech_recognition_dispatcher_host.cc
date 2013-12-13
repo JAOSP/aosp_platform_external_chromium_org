@@ -93,7 +93,7 @@ void SpeechRecognitionDispatcherHost::OnStartRequestOnIO(
 
   int session_id = SpeechRecognitionManager::GetInstance()->CreateSession(
       config);
-  DCHECK_NE(session_id, SpeechRecognitionManager::kSessionIDInvalid);
+  DCHECK_NE(session_id, (int)SpeechRecognitionManager::kSessionIDInvalid);
   SpeechRecognitionManager::GetInstance()->StartSession(session_id);
 }
 

@@ -1684,7 +1684,7 @@ void IndexedDBDatabase::OpenConnection(
     // The database was deleted then immediately re-opened; OpenInternal()
     // recreates it in the backing store.
     if (OpenInternal()) {
-      DCHECK_EQ(IndexedDBDatabaseMetadata::NO_INT_VERSION,
+      DCHECK_EQ((int)IndexedDBDatabaseMetadata::NO_INT_VERSION,
                 metadata_.int_version);
     } else {
       string16 message;

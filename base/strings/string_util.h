@@ -19,6 +19,10 @@
 #include "base/strings/string16.h"
 #include "base/strings/string_piece.h"  // For implicit conversions.
 
+// With clang, Bionic #defines snprintf to __builtin___snprintf_chk,
+// which can't work with the sprintf redeclaration below
+#undef snprintf
+
 // Safe standard library wrappers for all platforms.
 
 namespace base {
