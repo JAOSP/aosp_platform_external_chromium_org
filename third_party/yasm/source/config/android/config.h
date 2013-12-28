@@ -5,7 +5,7 @@
 #define CPP_PROG "gcc -E"
 
 /* */
-#define ENABLE_NLS 1
+/*#define ENABLE_NLS 1*/
 
 /* Define to 1 if you have the `abort' function. */
 #define HAVE_ABORT 1
