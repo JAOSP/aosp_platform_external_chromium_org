@@ -5,8 +5,11 @@
 package org.chromium.media;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.Manifest.permission;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.PowerManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Surface;
@@ -115,6 +118,10 @@ public class MediaPlayerBridge {
             headersMap.put("Cookie", cookies);
         try {
             getLocalPlayer().setDataSource(context, uri, headersMap);
+            if (context.checkCallingOrSelfPermission(permission.WAKE_LOCK)
+                    == PackageManager.PERMISSION_GRANTED) {
+                getLocalPlayer().setWakeMode(context, PowerManager.SCREEN_BRIGHT_WAKE_LOCK);
+            }
             return true;
         } catch (Exception e) {
             return false;
